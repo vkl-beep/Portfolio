@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Ingénieur Mécanique</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="#top" class="logo">Portfolio</a>
+
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#parcours" data-i18n="nav.experience">Parcours</a>
+      <a href="#projets" data-i18n="nav.projects">Projets</a>
+      <a href="#competences" data-i18n="nav.skills">Compétences</a>
+      <a href="#contact" class="btn-small" data-i18n="nav.contact">Contact</a>
+
+      <div class="lang-switch" role="group" aria-label="Choix de la langue">
+        <button type="button" data-lang="fr" class="active">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Présentation & Objectif -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="tag" data-i18n="hero.tag">SIGMA Clermont — Génie Mécanique</p>
+        <h1 data-i18n="hero.title">Bonjour, je suis [Prénom Nom]</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">
+          Élève ingénieur orienté méthodes industrielles, conception mécanique et
+          amélioration terrain, avec une première expérience en Bureau des Méthodes.
+        </p>
+        <div class="hero-actions">
+          <a href="#projets" class="btn-primary" data-i18n="hero.cta_projects">Voir mes projets</a>
+          <a href="assets/cv.pdf" class="btn-secondary" download data-i18n="hero.cta_cv">Télécharger mon CV</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="assets/img/profil.jpg" alt="Photo de profil" />
+      </div>
+    </section>
+
+    <!-- Parcours & Expériences -->
+    <section id="parcours" class="section">
+      <h2 data-i18n="exp.title">Parcours & Expériences</h2>
+      <div class="grid-2">
+        <article class="card">
+          <span class="badge" data-i18n="exp.bm.badge">Bureau des Méthodes</span>
+          <h3 data-i18n="exp.bm.role">Expérience en Bureau des Méthodes (BM)</h3>
+          <p class="meta" data-i18n="exp.bm.meta">[Période] · [Lieu]</p>
+          <p data-i18n="exp.bm.desc">
+            Rédaction et mise à jour de documents techniques, analyse de flux et soutien
+            opérationnel en lien avec le terrain.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge" data-i18n="exp.school.badge">Formation</span>
+          <h3 data-i18n="exp.school.role">Diplôme d'Ingénieur — SIGMA Clermont</h3>
+          <p class="meta" data-i18n="exp.school.meta">[Période] · Clermont-Ferrand</p>
+          <p data-i18n="exp.school.desc">
+            Ingénierie mécanique, conception CAO, analyse de procédés et gestion de projets
+            industriels.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projets & Réalisations -->
+    <section id="projets" class="section">
+      <div class="section-header">
+        <h2 data-i18n="proj.title">Projets & Réalisations</h2>
+        <div class="filters" role="group" aria-label="Filtrer les projets">
+          <button type="button" class="filter-btn active" data-filter="all" data-i18n="proj.filter_all">Tous</button>
+          <button type="button" class="filter-btn" data-filter="methodes" data-i18n="proj.filter_methods">Méthodes</button>
+          <button type="button" class="filter-btn" data-filter="conception" data-i18n="proj.filter_design">Conception</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card project-card" data-category="methodes">
+          <img src="assets/img/projet-1.jpg" alt="Aperçu projet méthodes" class="card-img" />
+          <h3 data-i18n="proj.p1.title">Projet Méthodes & Flux</h3>
+          <p data-i18n="proj.p1.desc">
+            Structuration de gammes ou d'instructions techniques, optimisation d'organisation
+            et retours terrain.
+          </p>
+          <ul class="tags">
+            <li>Bureau des Méthodes</li>
+            <li>Pack Office</li>
+            <li>Flux</li>
+          </ul>
+        </article>
+
+        <article class="card project-card" data-category="conception">
+          <img src="assets/img/projet-2.jpg" alt="Aperçu projet conception" class="card-img" />
+          <h3 data-i18n="proj.p2.title">Conception & Outillage</h3>
+          <p data-i18n="proj.p2.desc">
+            Modélisation 3D, mise en plan et réflexion sur des solutions techniques adaptées
+            aux contraintes industrielles.
+          </p>
+          <ul class="tags">
+            <li>CATIA V5</li>
+            <li>CAO</li>
+            <li>Mécanique</li>
+          </ul>
+        </article>
+
+        <article class="card project-card" data-category="conception">
+          <img src="assets/img/projet-3.jpg" alt="Aperçu projet académique ou perso" class="card-img" />
+          <h3 data-i18n="proj.p3.title">Projet d'équipe / Engagement</h3>
+          <p data-i18n="proj.p3.desc">
+            Travail collaboratif, gestion de contraintes, résolution de problèmes ou
+            implication associative.
+          </p>
+          <ul class="tags">
+            <li>Gestion de projet</li>
+            <li>Travail d'équipe</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences" class="section">
+      <h2 data-i18n="skills.title">Compétences & Outils</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 data-i18n="skills.tools_title">Logiciels & Technique</h3>
+          <p data-i18n="skills.tools_desc">
+            CATIA V5, Suite Office, lecture de plans et modélisation mécanique.
+          </p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="skills.soft_title">Atouts & Langues</h3>
+          <p data-i18n="skills.soft_desc">
+            Rigueur, autonomie, esprit d'équipe, sens du terrain · Français, Anglais, Allemand.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <h2 data-i18n="contact.title">Contact</h2>
+    <p>Email : <a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a></p>
+    <p>LinkedIn : <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>
