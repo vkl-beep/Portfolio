@@ -1,301 +1,542 @@
-const translations = {
-  fr: {
-    "nav.experience": "Parcours",
-    "nav.projects": "Projets",
-    "nav.skills": "Compétences",
-    "nav.contact": "Contact",
-    "hero.tag": "SIGMA Clermont — Génie Mécanique",
-    "hero.title": "Bonjour, je suis [Prénom Nom]",
-    "hero.subtitle":
-      "Élève ingénieur orienté méthodes industrielles, conception mécanique et amélioration terrain, avec une première expérience en Bureau des Méthodes.",
-    "hero.cta_projects": "Voir mes projets",
-    "hero.cta_cv": "Télécharger mon CV",
-    "hero.cta_video": "Voir la vidéo",
-    "exp.title": "Parcours & Expériences",
-    "exp.bm.badge": "Bureau des Méthodes",
-    "exp.bm.role": "Expérience en Bureau des Méthodes (BM)",
-    "exp.bm.meta": "[Période] · [Lieu]",
-    "exp.bm.desc":
-      "Rédaction et mise à jour de documents techniques, analyse de flux et soutien opérationnel en lien avec le terrain.",
-    "exp.school.badge": "Formation",
-    "exp.school.role": "Diplôme d'Ingénieur — SIGMA Clermont",
-    "exp.school.meta": "[Période] · Clermont-Ferrand",
-    "exp.school.desc":
-      "Ingénierie mécanique, conception CAO, analyse de procédés et gestion de projets industriels.",
-    "proj.title": "Projets & Réalisations",
-    "proj.filter_all": "Tous",
-    "proj.filter_methods": "Méthodes",
-    "proj.filter_design": "Conception",
-    "proj.video_btn": "Voir la vidéo",
-    "proj.p1.title": "Projet Méthodes & Flux",
-    "proj.p1.desc":
-      "Structuration de gammes ou d'instructions techniques, optimisation d'organisation et retours terrain.",
-    "proj.p2.title": "Conception & Outillage",
-    "proj.p2.desc":
-      "Modélisation 3D, mise en plan et réflexion sur des solutions techniques adaptées aux contraintes industrielles.",
-    "proj.p3.title": "Projet d'équipe / Engagement",
-    "proj.p3.desc":
-      "Travail collaboratif, gestion de contraintes, résolution de problèmes ou implication associative.",
-    "skills.title": "Compétences & Outils",
-    "skills.print_section": "Imprimer cette section",
-    "skills.print_all": "Imprimer tout le CV",
-    "skills.tools_title": "Logiciels & Technique",
-    "skills.tools_desc": "CATIA V5, Suite Office, lecture de plans et modélisation mécanique.",
-    "skills.soft_title": "Atouts & Langues",
-    "skills.soft_desc":
-      "Rigueur, autonomie, esprit d'équipe, sens du terrain · Français, Anglais, Allemand.",
-    "contact.title": "Contact"
-  },
-  en: {
-    "nav.experience": "Experience",
-    "nav.projects": "Projects",
-    "nav.skills": "Skills",
-    "nav.contact": "Contact",
-    "hero.tag": "SIGMA Clermont — Mechanical Engineering",
-    "hero.title": "Hi, I'm [First Name Last Name]",
-    "hero.subtitle":
-      "Mechanical engineering student focused on manufacturing methods, mechanical design, and shop-floor improvement, with prior experience in Methods Engineering.",
-    "hero.cta_projects": "View projects",
-    "hero.cta_cv": "Download CV",
-    "hero.cta_video": "Watch video",
-    "exp.title": "Background & Experience",
-    "exp.bm.badge": "Methods Engineering",
-    "exp.bm.role": "Methods Engineering Experience",
-    "exp.bm.meta": "[Period] · [Location]",
-    "exp.bm.desc":
-      "Drafting and updating technical documentation, flow analysis, and operational support close to the shop floor.",
-    "exp.school.badge": "Education",
-    "exp.school.role": "Master of Engineering — SIGMA Clermont",
-    "exp.school.meta": "[Period] · Clermont-Ferrand",
-    "exp.school.desc":
-      "Mechanical engineering, CAD design, process analysis, and industrial project management.",
-    "proj.title": "Projects & Achievements",
-    "proj.filter_all": "All",
-    "proj.filter_methods": "Methods",
-    "proj.filter_design": "Design",
-    "proj.video_btn": "Watch video",
-    "proj.p1.title": "Methods & Workflow Project",
-    "proj.p1.desc":
-      "Structuring work instructions or routings, layout improvement, and operational feedback.",
-    "proj.p2.title": "Design & Tooling",
-    "proj.p2.desc":
-      "3D modeling, technical drawings, and engineering solutions tailored to industrial constraints.",
-    "proj.p3.title": "Team Project / Involvement",
-    "proj.p3.desc":
-      "Teamwork, constraint management, problem solving, or student organization leadership.",
-    "skills.title": "Skills & Tools",
-    "skills.print_section": "Print this section",
-    "skills.print_all": "Print full CV",
-    "skills.tools_title": "Software & Technical Skills",
-    "skills.tools_desc": "CATIA V5, MS Office Suite, technical drawings, and mechanical modeling.",
-    "skills.soft_title": "Strengths & Languages",
-    "skills.soft_desc":
-      "Rigor, autonomy, teamwork, shop-floor mindset · French, English, German.",
-    "contact.title": "Contact"
-  },
-  de: {
-    "nav.experience": "Werdegang",
-    "nav.projects": "Projekte",
-    "nav.skills": "Kompetenzen",
-    "nav.contact": "Kontakt",
-    "hero.tag": "SIGMA Clermont — Maschinenbau",
-    "hero.title": "Hallo, ich bin [Vorname Nachname]",
-    "hero.subtitle":
-      "Maschinenbaustudent mit Fokus auf Fertigungsmethoden, Konstruktion und Prozessverbesserung sowie erster Erfahrung in der Arbeitsvorbereitung.",
-    "hero.cta_projects": "Projekte ansehen",
-    "hero.cta_cv": "Lebenslauf herunterladen",
-    "hero.cta_video": "Video ansehen",
-    "exp.title": "Werdegang & Erfahrungen",
-    "exp.bm.badge": "Arbeitsvorbereitung",
-    "exp.bm.role": "Erfahrung in der Arbeitsvorbereitung",
-    "exp.bm.meta": "[Zeitraum] · [Ort]",
-    "exp.bm.desc":
-      "Erstellung und Aktualisierung technischer Unterlagen, Flussanalyse und operative Unterstützung nah an der Fertigung.",
-    "exp.school.badge": "Ausbildung",
-    "exp.school.role": "Ingenieurstudium — SIGMA Clermont",
-    "exp.school.meta": "[Zeitraum] · Clermont-Ferrand",
-    "exp.school.desc":
-      "Maschinenbau, CAD-Konstruktion, Prozessanalyse und industrielles Projektmanagement.",
-    "proj.title": "Projekte & Praxis",
-    "proj.filter_all": "Alle",
-    "proj.filter_methods": "Methoden",
-    "proj.filter_design": "Konstruktion",
-    "proj.video_btn": "Video ansehen",
-    "proj.p1.title": "Projekt Methoden & Fluss",
-    "proj.p1.desc":
-      "Strukturierung von Arbeitsplänen oder Anweisungen, Ablaufoptimierung und Rückmeldungen aus der Praxis.",
-    "proj.p2.title": "Konstruktion & Betriebsmittel",
-    "proj.p2.desc":
-      "3D-Modellierung, Zeichnungserstellung und technische Lösungen für industrielle Anforderungen.",
-    "proj.p3.title": "Teamprojekt / Engagement",
-    "proj.p3.desc":
-      "Teamarbeit, Umgang mit Randbedingungen, Problemlösung oder Vereinsengagement.",
-    "skills.title": "Kompetenzen & Tools",
-    "skills.print_section": "Abschnitt drucken",
-    "skills.print_all": "Gesamten Lebenslauf drucken",
-    "skills.tools_title": "Software & Technik",
-    "skills.tools_desc": "CATIA V5, Office-Paket, Zeichnungslesen und mechanische Modellierung.",
-    "skills.soft_title": "Stärken & Sprachen",
-    "skills.soft_desc":
-      "Sorgfalt, Selbstständigkeit, Teamgeist, Praxisnähe · Französisch, Englisch, Deutsch.",
-    "contact.title": "Kontakt"
-  }
-};
-
-function setLanguage(lang) {
-  const dict = translations[lang] || translations.fr;
-  document.documentElement.lang = lang;
-
-  try {
-    localStorage.setItem("portfolio_lang", lang);
-  } catch (e) {
-    // Ignorer si le stockage est indisponible
-  }
-
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key]) {
-      el.textContent = dict[key];
-    }
-  });
-
-  document.querySelectorAll(".lang-switch button").forEach((btn) => {
-    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-  });
+:root {
+  --bg: #f6f9fc;
+  --surface: #ffffff;
+  --surface-alt: #eaf2f9;
+  --text: #162230;
+  --muted: #55677d;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: rgba(147, 197, 253, 0.35);
+  --border: #d5e2ef;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(22, 34, 48, 0.06);
 }
 
-function initFilters() {
-  const buttons = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filter = btn.getAttribute("data-filter");
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      cards.forEach((card) => {
-        const categories = (card.getAttribute("data-category") || "")
-          .trim()
-          .split(/\s+/);
-        const show = filter === "all" || categories.includes(filter);
-        card.classList.toggle("is-hidden", !show);
-      });
-    });
-  });
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-function initVideoModal() {
-  const triggers = document.querySelectorAll("[data-video-src]");
-  if (!triggers.length) return;
-
-  const modal = document.createElement("div");
-  modal.className = "video-modal";
-  modal.setAttribute("aria-hidden", "true");
-  modal.innerHTML = `
-    <div class="video-modal__backdrop" data-close-modal></div>
-    <div class="video-modal__dialog" role="dialog" aria-modal="true">
-      <button type="button" class="video-modal__close" data-close-modal aria-label="Fermer">&times;</button>
-      <div class="video-modal__body"></div>
-    </div>
-  `;
-  document.body.appendChild(modal);
-
-  const body = modal.querySelector(".video-modal__body");
-
-  function openModal(src) {
-    body.innerHTML = "";
-    const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
-
-    if (isDirectVideo) {
-      const video = document.createElement("video");
-      video.src = src;
-      video.controls = true;
-      video.autoplay = true;
-      body.appendChild(video);
-    } else {
-      const iframe = document.createElement("iframe");
-      iframe.src = src;
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-      iframe.allowFullscreen = true;
-      body.appendChild(iframe);
-    }
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-  }
-
-  function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    body.innerHTML = "";
-  }
-
-  triggers.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const src = btn.getAttribute("data-video-src");
-      if (src) openModal(src);
-    });
-  });
-
-  modal.querySelectorAll("[data-close-modal]").forEach((el) => {
-    el.addEventListener("click", closeModal);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
+html {
+  scroll-behavior: smooth;
 }
 
-function initPrintButtons() {
-  const buttons = document.querySelectorAll("[data-print-target]");
-  if (!buttons.length) return;
-
-  function cleanupPrint() {
-    document.body.classList.remove("printing-section");
-    document.querySelectorAll(".print-target").forEach((el) => {
-      el.classList.remove("print-target");
-    });
-  }
-
-  window.addEventListener("afterprint", cleanupPrint);
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      cleanupPrint();
-      const targetSelector = btn.getAttribute("data-print-target");
-      if (targetSelector && targetSelector !== "all") {
-        const targetEl = document.querySelector(targetSelector);
-        if (targetEl) {
-          targetEl.classList.add("print-target");
-          document.body.classList.add("printing-section");
-        }
-      }
-      window.print();
-    });
-  });
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  let saved = null;
-  try {
-    saved = localStorage.getItem("portfolio_lang");
-  } catch (e) {
-    saved = null;
+/* Barre de navigation */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 6%;
+  background: rgba(246, 249, 252, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.lang-switch button {
+  border: none;
+  background: transparent;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.lang-switch button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Section Hero */
+.hero {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 4.2rem 6% 3rem;
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  color: var(--accent-hover);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
+  max-width: 60ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-small,
+.btn-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.8rem 1.45rem;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.45rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background: var(--surface-alt);
+  color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-small {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+.btn-small:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-video {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  border: 1px solid #bfdbfe;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+.btn-video:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.hero-card {
+  background: var(--surface);
+  padding: 0.65rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.hero-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+  display: block;
+}
+
+/* Sections */
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3.5rem 6%;
+}
+
+.section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.45rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1.15rem;
+}
+
+.card-img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+  width: fit-content;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.65rem;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.tags li {
+  font-size: 0.8rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+/* Fenêtre modale vidéo */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.video-modal.is-open {
+  display: flex;
+}
+
+.video-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 34, 48, 0.72);
+}
+
+.video-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(860px, 100%);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+
+.video-modal__body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-modal__body iframe,
+.video-modal__body video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.65rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Boutons d'impression */
+.print-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-print {
+  background: var(--surface-alt);
+  color: var(--accent-hover);
+  border: 1px solid var(--border);
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-print:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Pied de page / Contact */
+.footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 3rem 6%;
+  color: var(--muted);
+  background: var(--surface);
+  margin-top: 2rem;
+}
+
+.footer h2 {
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 780px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 2.5rem;
   }
 
-  const browserLang = (navigator.language || "fr").slice(0, 2).toLowerCase();
-  const initialLang = saved || (["fr", "en", "de"].includes(browserLang) ? browserLang : "fr");
+  .hero-card {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
 
-  document.querySelectorAll(".lang-switch button").forEach((btn) => {
-    btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang")));
-  });
+/* Styles d'impression */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 1.2cm;
+  }
 
-  setLanguage(initialLang);
-  initFilters();
-  initVideoModal();
-  initPrintButtons();
-});
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .navbar,
+  .filters,
+  .hero-actions,
+  .card-actions,
+  .print-actions,
+  .btn-print,
+  .video-modal {
+    display: none !important;
+  }
+
+  body.printing-section main > section:not(.print-target),
+  body.printing-section footer {
+    display: none !important;
+  }
+
+  .is-hidden {
+    display: flex !important;
+  }
+
+  .hero,
+  .section,
+  .footer {
+    max-width: 100% !important;
+    padding: 0.8rem 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.8rem !important;
+  }
+
+  .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #cccccc !important;
+    padding: 0.9rem !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
