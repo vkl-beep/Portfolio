@@ -52,9 +52,19 @@ const i18nItems = {
   },
 
   "exp.title": {
-    fr: "Expériences Professionnelles & Diplômes",
-    en: "Work Experience & Education",
-    de: "Berufserfahrung & Ausbildung"
+    fr: "Diplômes & Expériences Professionnelles",
+    en: "Education & Work Experience",
+    de: "Ausbildung & Berufserfahrung"
+  },
+  "edu.subtitle": {
+    fr: "Diplômes & Formations",
+    en: "Degrees & Education",
+    de: "Abschlüsse & Studium"
+  },
+  "work.subtitle": {
+    fr: "Expériences Professionnelles",
+    en: "Work Experience",
+    de: "Berufserfahrung"
   },
   "exp.aaut.badge": {
     fr: "Stage Assistant Ingénieur",
