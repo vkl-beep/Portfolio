@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio — Ingénieur Mécanique</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="./css/Style.css" />
 </head>
 <body>
   <header class="navbar">
@@ -30,24 +30,52 @@
       <div class="hero-text">
         <p class="tag" data-i18n="hero.tag">SIGMA Clermont — Génie Mécanique</p>
         <h1 data-i18n="hero.title">Bonjour, je suis [Prénom Nom]</h1>
+
+        <p class="lang-subline">
+          <a href="#en" data-set-lang="en">EN</a>
+          <span>·</span>
+          <a href="#de" data-set-lang="de">DE</a>
+          <span>·</span>
+          <a href="#fr" data-set-lang="fr">FR</a>
+        </p>
+
         <p class="subtitle" data-i18n="hero.subtitle">
           Élève ingénieur orienté méthodes industrielles, conception mécanique et
           amélioration terrain, avec une première expérience en Bureau des Méthodes.
         </p>
         <div class="hero-actions">
           <a href="#projets" class="btn-primary" data-i18n="hero.cta_projects">Voir mes projets</a>
-          <a href="assets/cv.pdf" class="btn-secondary" download data-i18n="hero.cta_cv">Télécharger mon CV</a>
+          <a href="./assets/cv.pdf" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero.cta_cv">
+            Télécharger mon CV
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=TON_ID_PRESENTATION"
+            data-video-src="https://www.youtube.com/embed/TON_ID_PRESENTATION"
+            class="btn-video"
+            data-i18n="hero.cta_video"
+          >
+            Voir la vidéo de présentation
+          </a>
         </div>
       </div>
 
       <div class="hero-card">
-        <img src="assets/img/profil.jpg" alt="Photo de profil" />
+        <img src="./assets/img/profil.jpg" alt="Photo de profil" />
       </div>
     </section>
 
     <!-- Parcours & Expériences -->
     <section id="parcours" class="section">
       <h2 data-i18n="exp.title">Parcours & Expériences</h2>
+
+      <p class="lang-subline">
+        <a href="#en" data-set-lang="en">EN</a>
+        <span>·</span>
+        <a href="#de" data-set-lang="de">DE</a>
+        <span>·</span>
+        <a href="#fr" data-set-lang="fr">FR</a>
+      </p>
+
       <div class="grid-2">
         <article class="card">
           <span class="badge" data-i18n="exp.bm.badge">Bureau des Méthodes</span>
@@ -82,14 +110,32 @@
         </div>
       </div>
 
+      <p class="lang-subline">
+        <a href="#en" data-set-lang="en">EN</a>
+        <span>·</span>
+        <a href="#de" data-set-lang="de">DE</a>
+        <span>·</span>
+        <a href="#fr" data-set-lang="fr">FR</a>
+      </p>
+
       <div class="grid-3">
         <article class="card project-card" data-category="methodes">
-          <img src="assets/img/projet-1.jpg" alt="Aperçu projet méthodes" class="card-img" />
+          <img src="./assets/img/projet-1.jpg" alt="Aperçu projet méthodes" class="card-img" />
           <h3 data-i18n="proj.p1.title">Projet Méthodes & Flux</h3>
           <p data-i18n="proj.p1.desc">
             Structuration de gammes ou d'instructions techniques, optimisation d'organisation
             et retours terrain.
           </p>
+          <div class="card-actions">
+            <a
+              href="https://www.youtube.com/watch?v=TON_ID_1"
+              data-video-src="https://www.youtube.com/embed/TON_ID_1"
+              class="btn-video"
+              data-i18n="proj.video_btn"
+            >
+              Voir la vidéo
+            </a>
+          </div>
           <ul class="tags">
             <li>Bureau des Méthodes</li>
             <li>Pack Office</li>
@@ -98,12 +144,22 @@
         </article>
 
         <article class="card project-card" data-category="conception">
-          <img src="assets/img/projet-2.jpg" alt="Aperçu projet conception" class="card-img" />
+          <img src="./assets/img/projet-2.jpg" alt="Aperçu projet conception" class="card-img" />
           <h3 data-i18n="proj.p2.title">Conception & Outillage</h3>
           <p data-i18n="proj.p2.desc">
             Modélisation 3D, mise en plan et réflexion sur des solutions techniques adaptées
             aux contraintes industrielles.
           </p>
+          <div class="card-actions">
+            <a
+              href="https://www.youtube.com/watch?v=TON_ID_2"
+              data-video-src="https://www.youtube.com/embed/TON_ID_2"
+              class="btn-video"
+              data-i18n="proj.video_btn"
+            >
+              Voir la vidéo
+            </a>
+          </div>
           <ul class="tags">
             <li>CATIA V5</li>
             <li>CAO</li>
@@ -112,12 +168,22 @@
         </article>
 
         <article class="card project-card" data-category="conception">
-          <img src="assets/img/projet-3.jpg" alt="Aperçu projet académique ou perso" class="card-img" />
+          <img src="./assets/img/projet-3.jpg" alt="Aperçu projet académique ou perso" class="card-img" />
           <h3 data-i18n="proj.p3.title">Projet d'équipe / Engagement</h3>
           <p data-i18n="proj.p3.desc">
             Travail collaboratif, gestion de contraintes, résolution de problèmes ou
             implication associative.
           </p>
+          <div class="card-actions">
+            <a
+              href="https://www.youtube.com/watch?v=TON_ID_3"
+              data-video-src="https://www.youtube.com/embed/TON_ID_3"
+              class="btn-video"
+              data-i18n="proj.video_btn"
+            >
+              Voir la vidéo
+            </a>
+          </div>
           <ul class="tags">
             <li>Gestion de projet</li>
             <li>Travail d'équipe</li>
@@ -152,6 +218,6 @@
     <p>LinkedIn : <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></p>
   </footer>
 
-  <script src="Script.js"></script>
+  <script src="./js/Script.js"></script>
 </body>
 </html>
