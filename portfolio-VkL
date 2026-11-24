@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — [Votre Prénom NOM]</title>
+  <style>
+    :root {
+      --bg: #ece6e1;
+      --page-bg: #ffffff;
+      --text: #241f1d;
+      --muted: #6b625d;
+      --accent: #9c6b52;
+      --accent-soft: #f5ece6;
+      --border: #e6ddd7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 5rem;
+    }
+
+    /* Barre haute de contrôle */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .dot-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .dot-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn-ui {
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-ui.primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Conteneur type feuille A4 / slide */
+    .viewer {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+
+    .sheet {
+      display: none;
+      background: var(--page-bg);
+      min-height: 620px;
+      border-radius: 12px;
+      box-shadow: 0 14px 36px rgba(36, 31, 29, 0.12);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .sheet.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .page-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    .box {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.15rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1rem 0;
+    }
+
+    .exp-block {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: #fff;
+    }
+
+    .exp-block.highlight {
+      border: 2px solid var(--accent);
+      background: #fffdfb;
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-title {
+      font-weight: 700;
+      font-size: 1.12rem;
+      color: var(--accent);
+    }
+
+    .exp-meta {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+    li { margin-bottom: 0.3rem; }
+
+    /* Emplacements photo & QR code */
+    .media-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .img-box, .qr-box {
+      border: 1.5px dashed #cbb7ab;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      padding: 0.9rem;
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .img-box {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .qr-box {
+      background: #faf6f3;
+    }
+
+    .qr-square {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 0.5rem;
+      border: 1px solid #d8c8be;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      overflow: hidden;
+    }
+
+    .img-box img, .qr-square img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sheet-footer {
+      margin-top: 2rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Barre de navigation basse */
+    .pager {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      border-top: 1px solid var(--border);
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      z-index: 30;
+    }
+
+    @media (max-width: 780px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .sheet { padding: 1.4rem; }
+    }
+
+    /* Mode impression / export PDF : affiche toutes les pages */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .topbar, .pager { display: none; }
+      .viewer { margin: 0; padding: 0; max-width: 100%; }
+      .sheet {
+        display: flex !important;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        min-height: auto;
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="page-dots" id="pageDots">
+      <button class="dot-btn active" data-page="0">1. Profil</button>
+      <button class="dot-btn" data-page="1">2. Expériences clés</button>
+      <button class="dot-btn" data-page="2">3. Autres expériences</button>
+      <button class="dot-btn" data-page="3">4. Projets &amp; Études</button>
+      <button class="dot-btn" data-page="4">5. Contact &amp; QR</button>
+    </div>
+    <div class="actions">
+      <button class="btn-ui primary" onclick="window.print()">Exporter / Imprimer PDF</button>
+    </div>
+  </div>
+
+  <main class="viewer">
+    <!-- PAGE 1 : PROFIL & OBJECTIF -->
+    <section class="sheet active">
+      <div>
+        <div class="page-kicker">Portfolio &amp; CV en ligne</div>
+        <h1>[Prénom NOM]</h1>
+        <p class="muted">[Votre titre / diplôme / spécialité] — [Âge / Ville / Mobilité]</p>
+
+        <div class="box">
+          <strong>Objectif professionnel :</strong> [Décrivez ici le poste visé, votre secteur et ce que vous apportez.]
+        </div>
+
+        <p>[Court texte d'accroche résumant votre parcours, vos points forts et vos disponibilités.]</p>
+      </div>
+
+      <div class="media-stack" style="margin-top: 1.5rem;">
+        <div class="img-box">
+          <!-- Remplacez par : <img src="images/profil.jpg" alt="Photo de profil"> -->
+          <span>Photo de profil<br /><code>images/profil.jpg</code></span>
+        </div>
+        <div class="qr-box">
+          <div class="qr-square">
+            <!-- Remplacez par : <img src="images/qr-cv.png" alt="QR Code CV / Présentation"> -->
+            <span>QR<br /><code>images/qr-cv.png</code></span>
+          </div>
+          <strong>QR Code — Présentation / CV</strong>
+          <div class="muted">[Ex. : Vidéo pitch 1 min ou lien CV]</div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <span>[Prénom NOM] — Portfolio</span>
+        <span>Page 1 / 5</span>
+      </div>
+    </section>
+
+    <!-- PAGE 2 : EXPÉRIENCES PROFESSIONNELLES MISES EN AVANT -->
+    <section class="sheet">
+      <div>
+        <div class="page-kicker">À la une</div>
+        <h2>Expériences professionnelles clés</h2>
+
+        <div class="grid-2">
+          <div>
+            <article class="exp-block highlight">
+              <div class="exp-header">
+                <span class="exp-title">[Poste principal / Alternance / Stage long]</span>
+                <span class="exp-meta">[Dates]</span>
+              </div>
+              <div class="exp-meta">[Entreprise] — [Ville]</div>
+              <ul>
+                <li>[Mission majeure n°1 + méthode/outil + résultat concret]</li>
+                <li>[Mission majeure n°2 + autonomie / projet mené]</li>
+                <li>[Mission majeure n°3 + qualité / sécurité / collaboration]</li>
+              </ul>
+            </article>
+
+            <article class="exp-block">
+              <div class="exp-header">
+                <span class="exp-title">[Expérience n°2]</span>
+                <span class="exp-meta">[Dates]</span>
+              </div>
+              <div class="exp-meta">[Entreprise] — [Ville]</div>
+              <ul>
+                <li>[Mission clé n°1]</li>
+                <li>[Mission clé n°2]</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="media-stack">
+            <div class="img-box">
+              <!-- <img src="images/exp-1.jpg" alt="Illustration expérience"> -->
+              <span>Photo expérience<br /><code>images/exp-1.jpg</code></span>
+            </div>
+            <div class="qr-box">
+              <div class="qr-square">
+                <!-- <img src="images/qr-exp-video.png" alt="QR Code vidéo expérience"> -->
+                <span>QR Vidéo<br /><code>images/qr-exp-video.png</code></span>
+              </div>
+              <strong>QR Code — Vidéo / Projet</strong>
+              <div class="muted">[Ex. : Retour d'expérience ou démo]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <span>Expériences professionnelles</span>
+        <span>Page 2 / 5</span>
+      </div>
+    </section>
+
+    <!-- PAGE 3 : AUTRES EXPÉRIENCES & COMPÉTENCES -->
+    <section class="sheet">
+      <div>
+        <div class="page-kicker">Parcours terrain</div>
+        <h2>Autres expériences &amp; compétences</h2>
+
+        <div class="grid-2">
+          <div>
+            <article class="exp-block">
+              <div class="exp-header">
+                <span class="exp-title">[Emploi saisonnier / Stage / Job étudiant]</span>
+                <span class="exp-meta">[Année]</span>
+              </div>
+              <div class="exp-meta">[Entreprise] — [Ville]</div>
+              <ul>
+                <li>[Missions principales, organisation, respect des procédures]</li>
+                <li>[Ce que cette expérience a apporté sur le terrain]</li>
+              </ul>
+            </article>
+
+            <div class="box">
+              <strong>Compétences clés :</strong> [Listez vos compétences techniques, outils, langues et savoir-être.]
+            </div>
+          </div>
+
+          <div class="media-stack">
+            <div class="img-box">
+              <!-- <img src="images/exp-2.jpg" alt="Photo terrain"> -->
+              <span>Photo terrain<br /><code>images/exp-2.jpg</code></span>
+            </div>
+            <div class="qr-box">
+              <div class="qr-square">
+                <!-- <img src="images/qr-recommandation.png" alt="QR Code recommandation"> -->
+                <span>QR Lien<br /><code>images/qr-recommandation.png</code></span>
+              </div>
+              <strong>QR Code — Vidéo / Attestation</strong>
+              <div class="muted">[Lien vers vidéo, portfolio ou lettre]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <span>Autres expériences &amp; compétences</span>
+        <span>Page 3 / 5</span>
+      </div>
+    </section>
+
+    <!-- PAGE 4 : PROJETS & ÉTUDES -->
+    <section class="sheet">
+      <div>
+        <div class="page-kicker">Formation &amp; réalisations</div>
+        <h2>Projets &amp; Études</h2>
+
+        <div class="grid-2">
+          <div>
+            <article class="exp-block">
+              <div class="exp-header">
+                <span class="exp-title">[Projet marquant n°1]</span>
+                <span class="exp-meta">[Année]</span>
+              </div>
+              <p>[Objectif, démarche, outils utilisés et résultats.]</p>
+            </article>
+
+            <article class="exp-block">
+              <div class="exp-header">
+                <span class="exp-title">[Diplôme / Formation principale]</span>
+                <span class="exp-meta">[Années]</span>
+              </div>
+              <div class="exp-meta">[Établissement] — [Ville]</div>
+              <p>[Spécialisation, mentions ou points clés.]</p>
+            </article>
+          </div>
+
+          <div class="media-stack">
+            <div class="img-box">
+              <!-- <img src="images/projet-1.jpg" alt="Illustration projet"> -->
+              <span>Visuel projet<br /><code>images/projet-1.jpg</code></span>
+            </div>
+            <div class="qr-box">
+              <div class="qr-square">
+                <!-- <img src="images/qr-projet.png" alt="QR Code projet"> -->
+                <span>QR Projet<br /><code>images/qr-projet.png</code></span>
+              </div>
+              <strong>QR Code — Vidéo projet</strong>
+              <div class="muted">[Démonstration ou présentation]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <span>Projets &amp; Études</span>
+        <span>Page 4 / 5</span>
+      </div>
+    </section>
+
+    <!-- PAGE 5 : CONTACT & QR CODES -->
+    <section class="sheet">
+      <div>
+        <div class="page-kicker">Échangeons</div>
+        <h2>Contact &amp; Liens rapides</h2>
+
+        <div class="box">
+          <p><strong>Email :</strong> [votre.email@exemple.com]</p>
+          <p><strong>Téléphone :</strong> [06 00 00 00 00]</p>
+          <p><strong>LinkedIn :</strong> [Lien vers votre profil]</p>
+        </div>
+
+        <p class="muted">Astuce : vous pouvez aussi cliquer sur « Exporter / Imprimer PDF » en haut à droite pour générer un PDF multi-pages avec vos QR codes.</p>
+      </div>
+
+      <div class="qr-box" style="margin-top: 1.5rem;">
+        <div class="qr-square">
+          <!-- <img src="images/qr-contact.png" alt="QR Code contact"> -->
+          <span>QR Contact<br /><code>images/qr-contact.png</code></span>
+        </div>
+        <strong>QR Code — LinkedIn / Vidéo / CV</strong>
+        <div class="muted"><code>images/qr-contact.png</code></div>
+      </div>
+
+      <div class="sheet-footer">
+        <span>Contact</span>
+        <span>Page 5 / 5</span>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager">
+    <button class="btn-ui" id="prevBtn">← Page précédente</button>
+    <span id="pagerIndicator" class="muted">Page 1 sur 5</span>
+    <button class="btn-ui" id="nextBtn">Page suivante →</button>
+  </nav>
+
+  <script>
+    const sheets = Array.from(document.querySelectorAll('.sheet'));
+    const dots = Array.from(document.querySelectorAll('.dot-btn'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicator = document.getElementById('pagerIndicator');
+    let current = 0;
+
+    function showPage(index) {
+      if (index < 0 || index >= sheets.length) return;
+      current = index;
+      sheets.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      indicator.textContent = `Page ${current + 1} sur ${sheets.length}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => showPage(Number(dot.dataset.page)));
+    });
+
+    prevBtn.addEventListener('click', () => showPage(current - 1));
+    nextBtn.addEventListener('click', () => showPage(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') showPage(current + 1);
+      if (e.key === 'ArrowLeft') showPage(current - 1);
+    });
+  </script>
+</body>
+</html>
